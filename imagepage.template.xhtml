@@ -1,0 +1,36 @@
+<div class="theImageContainer">		
+			<div class="rightColumn">
+				{thumbs}
+			</div>
+			<div id="mainImage2">
+				<img src="{bigImage}" id="stageImg" alt="Main Image"/>
+			</div>
+			<div id="360Image">
+				{360}
+			</div>
+</div>	
+
+
+<script>
+jQuery(document).ready(function(){
+	jQuery("#header").remove();
+	jQuery("#footer").remove();
+	jQuery("#360Image").hide();
+	jQuery(".thumbgal").hover(function(){
+		jQuery(".thumbgal").parent().removeClass("highlightImg");
+		jQuery(this).parent().addClass("highlightImg");
+		var tsimg = jQuery(this).attr("alt");
+		if(tsimg == "360"){
+			jQuery("#mainImage2").hide();
+			jQuery("#360Image").show();
+		}
+		else{
+			jQuery("#mainImage2").show();
+			jQuery("#360Image").hide();
+			var imgsource = jQuery(this).attr("data-image-path");
+			jQuery("#stageImg").attr("src",imgsource);
+		}
+	});
+});
+
+</script>	

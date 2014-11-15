@@ -1,0 +1,123 @@
+<script>
+	jQuery(document).ready(function(){
+		jQuery(".fancyFrame").fancybox({
+			type: "iframe",
+			autoSize: true,
+			preload : true,
+			scrollOutside : false,
+			arrows: false,
+			nextClick: false,
+			mouseWheel: false,
+			fitToView: true,
+			width: "90%",
+				helpers:  {
+			        title:  null
+			    }
+			
+		})
+	})
+</script>
+<div class=kivab-product>
+	<div class="prodImg" id="imgcontainer">
+				
+				<div id="mainImage">
+					<img src="{imgurl}" id="stageImg" alt="Main Image" height="600"/>
+					
+				</div>
+				
+					{360}
+				
+				
+				<div class=kivab-product-image-subtable >
+					
+					{images}
+				</div>
+	</div>
+		
+				
+				<div id="mainProductDescription">
+				<h1 id="prodTitle">{title}</h1>
+					{quickdesc}
+					<ul>
+						{subtable}
+					</ul>
+					{cartlink}
+				</div>
+		
+
+	<div id="tabs">
+	    <ul>
+	        <li class="prodtab activetab" data-tab="specs">Description</li>
+	        <li class="prodtab" data-tab="videos">Video</li>
+	        <li class="prodtab" data-tab="documents">Documents</li>
+	        <li class="prodtab"  data-tab="software">Firmware / Software</li>
+	    </ul>
+	   
+		<div id="specs" class="tabdiv">
+			<div class=kivab-product-subtable>
+				{description}
+			</div>
+	    </div>
+		<div id="videos" class="tabdiv">	
+			<div class="prodVid" id="vidcontainer" style="display:none;">
+			</div>
+			{videos}
+	   	</div>
+	   	<div id="documents" class="tabdiv">	
+		   	<div class=kivab-product-attachments>
+					No documents available
+			</div>
+	   	</div>
+	   	<div id="software" class="tabdiv">	
+		   	<div class=kivab-product-attachments>
+					No software available
+			</div>
+	   	</div>
+
+	</div>
+
+	
+</div>
+<script>
+jQuery(document).ready(function(){
+	jQuery(".tabdiv").hide();
+	jQuery("#specs").show();
+	jQuery(".prodtab").click(function(){
+		var thediv = jQuery(this).attr("data-tab");
+		jQuery(".tabdiv").hide();
+		jQuery(this).removeClass("prodtab");
+		jQuery(".activetab").addClass("prodtab").removeClass("activetab");
+		jQuery(this).addClass("activetab");
+		jQuery("#" + thediv).show();
+		
+	});
+
+	if(document.getElementById("360Image") == null){
+		jQuery("#360Image").hide();
+	}
+	else{
+		jQuery("#mainImage").hide();
+	}
+	jQuery(".thumbgal").hover(function(){
+		jQuery(".thumbgal").parent().parent().removeClass("highlightImg");
+		jQuery(this).parent().parent().addClass("highlightImg");
+		var tsimg = jQuery(this).attr("alt");
+		if(tsimg == "360"){
+			//var imgsource = jQuery(this).attr("data-image-path");
+			jQuery("#mainImage").hide();
+			jQuery("#360Image").show();
+		}
+		else{
+			jQuery("#mainImage").show();
+			jQuery("#360Image").hide();
+			var imgsource = jQuery(this).attr("data-image-path");
+			jQuery("#stageImg").attr("src",imgsource);
+		}
+	});
+
+		var replaced = jQuery("#prodTitle").text().replace('Bluetooth','<em>Bluetooth</em>&reg;')
+		jQuery("#prodTitle").html(replaced);
+
+});
+
+</script>	

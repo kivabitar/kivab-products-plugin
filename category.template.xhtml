@@ -1,0 +1,44 @@
+<div class="category-filters">
+		
+		<ul>
+			<li><h2>Filters</h2></li>
+			<li><input type="checkbox" name="chk[]" class="checkfilter" data-catID="13"  value="13"  CHECKED></li>
+			//add loop  here for filters view
+		</ul>
+
+</div>
+<div class="sonetics-categories" id="{catID}">
+<a href="#" id="reset">Show All</a>
+	{prods}
+</div>&nbsp;
+
+<script>
+	jQuery(document).ready(function(){
+		jQuery(".checkfilter").each(function(){
+			var thediv = jQuery(this).attr('data-catID'); 
+			var checked = jQuery(this).is(":checked");
+			if(checked == false){
+				jQuery('[data-cat="' + thediv + '"]').hide();
+			}
+		});
+		jQuery("#reset").click(function(){
+			jQuery(".checkfilter").each(function(){
+				var thediv = jQuery(this).attr('data-catID'); 
+				jQuery(this).prop('checked', true);
+				jQuery('[data-cat="' + thediv + '"]').show();
+
+			});
+		})
+		jQuery(".checkfilter").click(function(){
+			var thediv = jQuery(this).attr('data-catID'); 
+			var checked = jQuery(this).is(":checked");
+			if(checked == false){
+				jQuery('[data-cat="' + thediv + '"]').hide();
+			}
+			else{
+				jQuery('[data-cat="' + thediv + '"]').show();
+			}
+		})
+	});
+</script>
+

@@ -1,0 +1,21 @@
+
+				<div class='kivab-product-video'>
+					<a href="javascript:void(NULL);" id="{vidID}"><strong>{title}</strong></a>
+					
+					<div class="kivab-video-description">
+						{desc}
+					</div>
+					
+				</div>
+			
+<script type="text/javascript">
+	jQuery("#{vidID}").click(function(){
+		jQuery('#vidcontainer').html('<h2>{mainTitle}</h2><object width="560" height="315"><param name="movie" value="{videoURL}"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="{videoURL}" type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always" allowfullscreen="true"></embed></object><br /><span class="vidDesc">{desc}</span><br /><br />').slideDown("slow");
+		jQuery('.kivab-product-video a').each(function(){
+			jQuery(this).text( jQuery(this).text().replace(' *Current',''));
+			jQuery(this).text( jQuery(this).text().replace(' <span style="color:#fb6417;">*Current</span>',''));
+		});
+		jQuery("#{vidID}").append(' <span style="color:#fb6417;">*Current</span>');
+	});	
+</script>
+

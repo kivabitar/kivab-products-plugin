@@ -1,0 +1,30 @@
+<script>
+	jQuery(document).ready(function(){
+		jQuery(".checkfilter").each(function(){
+			var thediv = jQuery(this).attr('data-catID'); 
+			var checked = jQuery(this).is(":checked");
+			if(checked == false){
+				jQuery('[data-cat="' + thediv + '"]').hide();
+			}
+		});
+		jQuery("#reset").click(function(){
+			jQuery(".checkfilter").each(function(){
+				var thediv = jQuery(this).attr('data-catID'); 
+				jQuery(this).prop('checked', true);
+				jQuery('[data-cat="' + thediv + '"]').show();
+
+			});
+		})
+		jQuery(".checkfilter").click(function(){
+			var thediv = jQuery(this).attr('data-catID'); 
+			var checked = jQuery(this).is(":checked");
+			if(checked == false){
+				jQuery('[data-cat="' + thediv + '"]').hide();
+			}
+			else{
+				jQuery('[data-cat="' + thediv + '"]').show();
+			}
+		})
+	});
+</script>
+
